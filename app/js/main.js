@@ -77,7 +77,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   //Scan
-  var infoObj = getInto();
   const axios = require('axios');
   function scan(forSelectedPhotos = false) {
     if (window.isMediaStreamAPISupported && !window.noCameraPermission) {
@@ -110,22 +109,6 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('handleBack').onclick = function() {
     window.location.href = 'https://hw.sagacn.com/app/#/list';
   };
-
-  // 获取token和展台名
-  function getInto() {
-    let obj = {};
-    const href = location.href;
-    const arr = href.split('?');
-    let infoArr = arr[1].split('&');
-    let token = infoArr[0].split('=');
-    let name = infoArr[1].split('=');
-    obj = {
-      'token': token[1],
-      'name': name[1]
-    };
-    return obj;
-  }
-
 
   //Hide dialog
   function hideDialog() {

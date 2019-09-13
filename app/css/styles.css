@@ -250,7 +250,7 @@ video {
 }
 
 .app__dialog {
-  z-index: 12;
+  z-index: 120;
   background-color: #fff;
   width: 290px;
   height: 180px;
