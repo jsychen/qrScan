@@ -58,20 +58,24 @@
       color: #999;
       text-decoration: none;
     }
-    /* .mask{
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 2;
-      background-image: url(../images/bg.png);
-      background-size: cover;
-    } */
+    #pauseBtn{
+      width: 20%;
+      height: 30px;
+      border-radius: 5px;
+      position: absolute;
+      left: 40%;
+      top: 20px;
+      background: #4CAF50;
+      color: #fff;
+      border: 0;
+      z-index: 101;
+      outline: none;
+    }
   </style>
 </head>
 
 <body>
+  <button id="pauseBtn" type="button">暂停扫描</button>
   <div class="app__layout">
     <div class="app__layout-content">
       <!-- <div class="mask"></div> -->

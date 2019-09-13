@@ -45,6 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // Set camera overlay size
     setTimeout(() => {
       setCameraOverlay();
+      console.log('fsdfadsfasfasfasfasdfa')
       if (window.isMediaStreamAPISupported) {
         scan();
       }
@@ -156,5 +157,12 @@ window.addEventListener('DOMContentLoaded', () => {
         scan(true);
       }
     });
+  }
+  // 暂停扫描
+  document.getElementById('pauseBtn').onclick = function () {
+    textBoxEle.value = '暂停扫描';
+    scanningEle.style.display = 'none';
+    dialogElement.classList.remove('app__dialog--hide');
+    dialogOverlayElement.classList.remove('app__dialog--hide');
   }
 });
