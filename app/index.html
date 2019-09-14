@@ -71,6 +71,16 @@
       z-index: 101;
       outline: none;
     }
+    textarea#result{
+      border: 0;
+      width: 290px;
+      font-size: 14px;
+      color: #333;
+      box-sizing: border-box;
+      line-height: 20px;
+      box-sizing: border-box;
+      padding: 10px;
+    }
   </style>
 </head>
 
@@ -84,7 +94,7 @@
       <!-- Dialog  -->
       <div class="app__dialog app__dialog--hide">
         <div class="app__dialog-content">
-          <input type="text" id="result" readonly style="border: 0;">
+          <textarea id="result" rows="2" readonly></textarea>
         </div>
         <div class="app__dialog-actions">
           <button type="button" class="app__dialog-open" style="display: none;">Open</button>

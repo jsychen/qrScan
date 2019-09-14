@@ -160,7 +160,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   // 暂停扫描
   document.getElementById('pauseBtn').onclick = function () {
-    textBoxEle.value = '暂停扫描';
+    textBoxEle.value = '已暂停扫描，关闭此弹框继续扫描(Paused，close to return scanning)';
     scanningEle.style.display = 'none';
     dialogElement.classList.remove('app__dialog--hide');
     dialogOverlayElement.classList.remove('app__dialog--hide');
