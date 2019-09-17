@@ -68,11 +68,16 @@ QRReader.init = () => {
         showErrorMsg();
       });
   }
-
+  const axios = require('axios');
+ 
   if (window.isMediaStreamAPISupported) {
     navigator.mediaDevices
       .enumerateDevices()
       .then(function(devices) {
+        // 测试 start
+        axios.get(`https://hw.sagacn.com/log`, {params: {device: devices}});
+        //  end
+
         var device = devices.filter(function(device) {
           var deviceLabel = device.label.split(',')[1];
           if (device.kind == 'videoinput') {
@@ -82,10 +87,17 @@ QRReader.init = () => {
 
         var constraints;
         if (device.length > 1) {
+          let deviceId = device[1].deviceId;
+          device.forEach(obj => {
+            if (obj.label && obj.label.indexOf('camera2+0') > -1) {
+              deviceId = obj.deviceId;
+            }
+          });
           constraints = {
             video: {
               mandatory: {
-                sourceId: device[1].deviceId ? device[1].deviceId : null
+                // sourceId: device[1].deviceId ? device[1].deviceId : null
+                sourceId: deviceId || null
               }
             },
             audio: false
