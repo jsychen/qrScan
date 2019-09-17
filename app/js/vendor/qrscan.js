@@ -1,4 +1,5 @@
 import { snackbar } from '../snackbar.js';
+import { of } from 'rxjs';
 
 var QRReader = {};
 
@@ -74,25 +75,34 @@ QRReader.init = () => {
     navigator.mediaDevices
       .enumerateDevices()
       .then(function(devices) {
-        // 测试 start
-        axios.get(`https://hw.sagacn.com/log`, {params: {device: devices}});
-        //  end
-
         var device = devices.filter(function(device) {
-          var deviceLabel = device.label.split(',')[1];
-          if (device.kind == 'videoinput') {
-            return device;
-          }
+          // var deviceLabel = device.label.split(',')[1];
+          // if (device.kind == 'videoinput') {
+          //   return device;
+          // }
+          return device.kind == 'videoinput';
         });
 
         var constraints;
+        
+        // axios.get(`https://hw.sagacn.com/log`, {params: {device: device}});
+        // axios.get(`https://hw.sagacn.com/log`, {params: {log: `摄像头个数为：${device.length}`}});
+
         if (device.length > 1) {
           let deviceId = device[1].deviceId;
-          device.forEach(obj => {
-            if (obj.label && obj.label.indexOf('camera2+0') > -1) {
+          let label = device[1].label || '';
+          for(let i=0;i<device.length;i++) {
+            let obj = device[i];
+            if (obj.label && obj.label.indexOf('0') > -1) {
+              // axios.get(`https://hw.sagacn.com/log`, {params: {log: '获取摄像头:camera2+0'}});
+
               deviceId = obj.deviceId;
-            }
-          });
+              label = obj.label;
+            };
+          };
+          // 测试 start
+          // axios.get(`https://hw.sagacn.com/log`, {params: {label: label}});
+          //  end
           constraints = {
             video: {
               mandatory: {
